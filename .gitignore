@@ -30,3 +30,6 @@ replay_pid*
 .vscode
 .vscode/
 .vscode/*
+
+build/resources
+build/resources/*
