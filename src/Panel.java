@@ -32,5 +32,7 @@ public class Panel extends JPanel
         super.paintComponent(graphics);
         
         graphics.drawImage(this.backgroundImage, 0, 0, this);
+
+        repaint();
     }
 }
