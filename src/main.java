@@ -4,6 +4,8 @@ class Main
     {
         System.out.println("Welcome!");
 
-        new Frame("./assets/background.png");
+        new Frame (
+            "./resources/background.png"
+        );
     }
 }
