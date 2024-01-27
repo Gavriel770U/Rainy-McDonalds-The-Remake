@@ -1,9 +1,10 @@
 import javax.swing.JFrame;
 import java.awt.Dimension;
+import java.io.IOException;
 
 public class Frame extends JFrame
 {
-    public Frame()
+    public Frame(final String backgroundPath)
     {
         setTitle("Rainy McDonald's The Remake");
         setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
@@ -11,7 +12,17 @@ public class Frame extends JFrame
         setAutoRequestFocus(true);
         setFocusable(true);
         setResizable(false);
-        add(new Panel());
+
+        try
+        {
+            add(new Panel(backgroundPath));
+        }
+        catch (IOException ioe)
+        {
+            System.err.println(ioe);
+            System.err.println("Failed to load background image");
+        }
+
         pack();
         setVisible(true);
     }    
