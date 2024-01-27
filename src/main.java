@@ -4,6 +4,6 @@ class Main
     {
         System.out.println("Welcome!");
 
-        for(;;);
+        new Frame();
     }
 }
