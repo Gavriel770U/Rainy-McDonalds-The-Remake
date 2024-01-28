@@ -6,13 +6,17 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Panel extends JPanel
 {
     private ImageResizer imageResizer;
     private BufferedImage backgroundImage;
 
-    public Panel(final String backgroundPath) throws IOException
+    public Panel (final String backgroundPath,
+                  Player player,
+                  ArrayList<FallingObject> fallingObjects
+    ) throws IOException
     {
         setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
         setVisible(true);

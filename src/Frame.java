@@ -1,10 +1,15 @@
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Frame extends JFrame
 {
-    public Frame(final String backgroundPath)
+    public Frame (final String backgroundPath,
+                  Player player,
+                  ArrayList<FallingObject> fallingObjects
+    )
     {
         setTitle("Rainy McDonald's The Remake");
         setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
@@ -15,7 +20,14 @@ public class Frame extends JFrame
 
         try
         {
-            add(new Panel(backgroundPath));
+            add
+            (
+                new Panel (
+                   backgroundPath,
+                   player,
+                   fallingObjects
+                )
+            );
         }
         catch (IOException ioe)
         {
