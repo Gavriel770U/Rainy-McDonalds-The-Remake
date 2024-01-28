@@ -1,12 +1,7 @@
 public class Player extends BaseObject
 {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
-
-    public Player(final int x, final int y, final int width, final int height)
+    public Player(final int x, final int y, final int width, final int height, final double velocity, final double acceleration)
     {
-        super(x, y, width, height);
+        super(x, y, width, height, velocity, acceleration);
     }
 }
