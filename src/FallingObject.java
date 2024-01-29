@@ -5,8 +5,9 @@ public class FallingObject extends BaseObject
         super(x, y, width, height, velocity, acceleration);
     }
 
+// not final, wrong stuff
     public void fall()
     {
-        
+        this.y = this.y0 + this.velocity0 + (this.acceleration) / 2;
     }
 }
