@@ -25,6 +25,7 @@ public class Panel extends JPanel
         setVisible(true);
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
+        setFocusable(true);
 
         this.imageResizer = ImageResizer.getInstance();
 

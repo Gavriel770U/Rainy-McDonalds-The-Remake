@@ -5,4 +5,9 @@ public class Player extends BaseObject
         super(x, y, width, height, velocity, acceleration, playerPath);
 
     }
+
+    public void move(final double time, final byte direction)
+    {
+        this.x += direction * this.velocity;
+    }
 }

@@ -7,7 +7,7 @@ class Main
         System.out.println("Welcome!");
 
         ArrayList<FallingObject> fallingObjects = new ArrayList<>();
-        Player player = new Player(Settings.FRAME_WIDTH.value / 2, 400, 160, 160, 10, 5, "./resources/player.png");
+        Player player = new Player(Settings.FRAME_WIDTH.value / 2, 400, 160, 160, 10, 0, "./resources/player.png");
 
         new Frame (
             "./resources/background.png",
