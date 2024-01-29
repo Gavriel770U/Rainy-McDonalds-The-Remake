@@ -12,6 +12,8 @@ public class Panel extends JPanel
 {
     private ImageResizer imageResizer;
     private BufferedImage backgroundImage;
+    private double startTime;
+    private double currentTime;
 
     public Panel (final String backgroundPath,
                   Player player,
@@ -32,6 +34,8 @@ public class Panel extends JPanel
             Settings.FRAME_WIDTH.value,
             Settings.FRAME_HEIGHT.value
         );
+        
+        this.startTime = System.currentTimeMillis();
     }    
 
     @Override
@@ -40,6 +44,8 @@ public class Panel extends JPanel
         super.paintComponent(graphics);
         
         graphics.drawImage(this.backgroundImage, 0, 0, this);
+
+        this.currentTime = (System.currentTimeMillis() - this.startTime) / 1000.0;
 
         repaint();
     }
