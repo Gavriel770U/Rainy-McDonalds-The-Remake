@@ -1,3 +1,9 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public abstract class BaseObject
 {
     protected int x;
@@ -9,8 +15,10 @@ public abstract class BaseObject
     protected double velocity0;
     protected double velocity;
     protected double acceleration;
+    protected BufferedImage image;
+    protected ImageResizer imageResizer;
     
-    public BaseObject(final int x, final int y, final int width, final int height, final double velocity, final double acceleration)
+    public BaseObject(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String path)
     {
         this.x = x;
         this.x0 = x;
@@ -21,6 +29,23 @@ public abstract class BaseObject
         this.velocity0 = velocity;
         this.velocity = velocity;
         this.acceleration = acceleration;
+        this.imageResizer = this.imageResizer.getInstance();
+
+        try
+        {
+            this.image = ImageIO.read(new File(path));
+
+            this.image = this.imageResizer.resizeImage (
+                this.image,
+                width,
+                height
+            );
+        }
+        catch (IOException ioe)
+        {
+            System.out.println("Failed to open image");
+            System.out.println(ioe);
+        }
     }
 
     public int getX()
@@ -41,5 +66,10 @@ public abstract class BaseObject
     public int getHeight()
     {
         return this.height;
+    }
+
+    public BufferedImage getImage()
+    {
+        return this.image;
     }
 }
