@@ -112,4 +112,8 @@ public abstract class BaseObject
             this.imageResizer == o.imageResizer
         );
     }
+
+    public abstract void setWidth(final int newWidth);
+
+    public abstract void setHeight(final int newHeight);
 }

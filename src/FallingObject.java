@@ -9,4 +9,14 @@ public class FallingObject extends BaseObject
     {
         this.y = (int)(this.y0 + this.velocity0 * time + 0.5 * this.acceleration * time * time);
     }
+
+    public void setWidth(final int newWidth)
+    {
+        // FallingObject's width cannot be changed!
+    }
+
+    public void setHeight(final int newHeight)
+    {
+        // FallingObject's height cannot be changed!
+    }
 }

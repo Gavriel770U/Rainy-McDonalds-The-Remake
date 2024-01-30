@@ -71,8 +71,8 @@ public class Panel extends JPanel
             {
                 iter.remove();
 
-                // this.player.setHeight(this.player.getHeight() + 100);
-                // this.player.setWidth(this.player.getWidth() + 100);
+                this.player.setHeight(this.player.getHeight() + Settings.HEIGHT_GROWTH.value);
+                this.player.setWidth(this.player.getWidth() + Settings.WIDTH_GROWTH.value);
             }
         }
 
