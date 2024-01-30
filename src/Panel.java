@@ -15,6 +15,7 @@ public class Panel extends JPanel
     private double startTime;
     private double currentTime;
     private Player player;
+    private ArrayList<FallingObject> fallingObjects;
 
     public Panel (final String backgroundPath,
                   Player player,
@@ -38,6 +39,8 @@ public class Panel extends JPanel
         );
 
         this.player = player;
+
+        this.fallingObjects = fallingObjects;
         
         this.startTime = System.currentTimeMillis();
     }    
@@ -52,6 +55,15 @@ public class Panel extends JPanel
         this.currentTime = (System.currentTimeMillis() - this.startTime) / 1000.0;
 
         graphics.drawImage(this.player.getImage(), this.player.getX(), this.player.getY(), this);
+
+        for (FallingObject fallingObject : this.fallingObjects)
+        {
+            graphics.drawImage(fallingObject.getImage(), fallingObject.getX(), fallingObject.getY(), this);
+
+            fallingObject.fall(this.currentTime);
+
+            System.out.println(this.player.isColliding(fallingObject));
+        }
 
         repaint();
     }

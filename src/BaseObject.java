@@ -71,4 +71,14 @@ public abstract class BaseObject
     {
         return this.image;
     }
+
+    public boolean isColliding(BaseObject other)
+    {
+        return (
+            this.x < other.getX() + other.getWidth() &&
+            this.x + this.width > other.getX() &&
+            this.y < other.getY() + other.getHeight() &&
+            this.y + this.height > other.getY()
+        );
+    }
 }

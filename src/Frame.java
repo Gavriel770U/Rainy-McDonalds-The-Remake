@@ -16,6 +16,7 @@ public class Frame extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setAutoRequestFocus(true);
         setFocusable(true);
+        setResizable(false);
         addKeyListener(new CustomKeyListener(player, System.currentTimeMillis()));
 
         try
