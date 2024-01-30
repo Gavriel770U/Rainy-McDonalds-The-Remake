@@ -81,4 +81,35 @@ public abstract class BaseObject
             this.y + this.height > other.getY()
         );
     }
+    
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (null == obj) 
+        {
+            return false;
+        }
+        if (obj == this)
+        {
+            return true;
+        }
+        if (!(obj instanceof BaseObject)) 
+        {
+            return false;
+        }
+        BaseObject o = (BaseObject) obj;
+        return (
+            this.x == o.x &&
+            this.y == o.y &&
+            this.x0 == o.x0 &&
+            this.y0 == o.y0 &&
+            this.width == o.width &&
+            this.height == o.height &&
+            this.velocity == o.velocity &&
+            this.velocity0 == o.velocity0 &&
+            this.acceleration == o.acceleration &&
+            this.image == o.image &&
+            this.imageResizer == o.imageResizer
+        );
+    }
 }

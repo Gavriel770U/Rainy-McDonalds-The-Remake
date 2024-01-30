@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Panel extends JPanel
 {
@@ -56,13 +57,23 @@ public class Panel extends JPanel
 
         graphics.drawImage(this.player.getImage(), this.player.getX(), this.player.getY(), this);
 
-        for (FallingObject fallingObject : this.fallingObjects)
+        Iterator<FallingObject> iter = this.fallingObjects.iterator();
+
+        while (iter.hasNext())
         {
+            FallingObject fallingObject = iter.next();
+
             graphics.drawImage(fallingObject.getImage(), fallingObject.getX(), fallingObject.getY(), this);
 
             fallingObject.fall(this.currentTime);
 
-            System.out.println(this.player.isColliding(fallingObject));
+            if (this.player.isColliding(fallingObject))
+            {
+                iter.remove();
+
+                // this.player.setHeight(this.player.getHeight() + 100);
+                // this.player.setWidth(this.player.getWidth() + 100);
+            }
         }
 
         repaint();

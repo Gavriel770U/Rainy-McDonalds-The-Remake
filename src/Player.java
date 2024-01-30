@@ -10,4 +10,14 @@ public class Player extends BaseObject
     {
         this.x += direction * this.velocity;
     }
+
+    public void setWidth(final int newWidth)
+    {
+        this.width = newWidth;
+    }
+
+    public void setHeight(final int newHeight)
+    {
+        this.height = newHeight;
+    }
 }
