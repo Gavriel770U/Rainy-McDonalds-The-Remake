@@ -1,7 +1,6 @@
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Frame extends JFrame

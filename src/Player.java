@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-
 public class Player extends BaseObject
 {    
     public Player(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String playerPath)
