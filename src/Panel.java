@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 public class Panel extends JPanel
 {
@@ -58,6 +59,7 @@ public class Panel extends JPanel
         graphics.drawImage(this.player.getImage(), this.player.getX(), this.player.getY(), this);
 
         Iterator<FallingObject> iter = this.fallingObjects.iterator();
+        ArrayList<FallingObject> deleted = new ArrayList<FallingObject>();
 
         while (iter.hasNext())
         {
@@ -65,15 +67,51 @@ public class Panel extends JPanel
 
             graphics.drawImage(fallingObject.getImage(), fallingObject.getX(), fallingObject.getY(), this);
 
-            fallingObject.fall(this.currentTime);
+            fallingObject.fall();
 
-            if (this.player.isColliding(fallingObject))
+            if (this.player.isColliding(fallingObject) || fallingObject.getY() > Settings.FRAME_HEIGHT.value)
             {
                 iter.remove();
 
-                this.player.setHeight(this.player.getHeight() + Settings.HEIGHT_GROWTH.value);
-                this.player.setWidth(this.player.getWidth() + Settings.WIDTH_GROWTH.value);
+                if(this.player.isColliding(fallingObject))
+                {
+                    this.player.setHeight(this.player.getHeight() + Settings.HEIGHT_GROWTH.value);
+                    this.player.setWidth(this.player.getWidth() + Settings.WIDTH_GROWTH.value);
+                }
+                    
+                Random rand = new Random();
+
+                deleted.add(new FallingObject 
+                (
+                    rand.nextInt((Settings.FRAME_WIDTH.value - fallingObject.getWidth() + 1)),
+                    -100,
+                    fallingObject.getWidth(),
+                    fallingObject.getHeight(),
+                    fallingObject.getVelocity(),
+                    fallingObject.getAcceleration(),
+                    fallingObject.getPath()
+                ));
             }
+        }
+
+        iter = deleted.iterator();
+
+        while(iter.hasNext())
+        {
+            FallingObject fallingObject = iter.next();
+
+            this.fallingObjects.add( new FallingObject
+            (
+                fallingObject.getX(),
+                fallingObject.getY(),
+                fallingObject.getWidth(),
+                fallingObject.getHeight(),
+                fallingObject.getVelocity(),
+                fallingObject.getAcceleration(),
+                fallingObject.getPath()
+            ));
+
+            iter.remove();
         }
 
         repaint();

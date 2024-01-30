@@ -16,5 +16,3 @@ cd ../%BUILD_DIR%
 jar cfm RainyMcdonaldsRemake.jar ./MANIFEST.MF *.class
 
 echo Build completed successfully.
-
-pause

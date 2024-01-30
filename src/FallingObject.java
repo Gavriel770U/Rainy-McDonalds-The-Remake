@@ -5,9 +5,13 @@ public class FallingObject extends BaseObject
         super(x, y, width, height, velocity, acceleration, fallingObjectPath);
     }
 
-    public void fall(final double time)
+    public void fall()
     {
-        this.y = (int)(this.y0 + this.velocity0 * time + 0.5 * this.acceleration * time * time);
+        this.time = System.currentTimeMillis();
+
+        this.time = (this.time - this.time0) / 1000.0;
+
+        this.y = (int)(this.y0 + this.velocity0 * this.time + 0.5 * this.acceleration * this.time * this.time);
     }
 
     public void setWidth(final int newWidth)

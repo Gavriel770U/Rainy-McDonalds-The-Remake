@@ -11,12 +11,15 @@ public abstract class BaseObject
     protected int y0;
     protected int width;
     protected int height;
+    protected double time0;
+    protected double time;
     protected double velocity0;
     protected double velocity;
     protected double acceleration;
     protected BufferedImage image;
     protected ImageResizer imageResizer;
-    
+    protected String path;
+
     public BaseObject(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String path)
     {
         this.x = x;
@@ -29,6 +32,8 @@ public abstract class BaseObject
         this.velocity = velocity;
         this.acceleration = acceleration;
         this.imageResizer = this.imageResizer.getInstance();
+        this.path = path;
+        this.time0 = System.currentTimeMillis();
 
         try
         {
@@ -67,9 +72,24 @@ public abstract class BaseObject
         return this.height;
     }
 
+    public double getVelocity()
+    {
+        return this.velocity;
+    }
+
+    public double getAcceleration()
+    {
+        return this.acceleration;
+    }
+
     public BufferedImage getImage()
     {
         return this.image;
+    }
+
+    public String getPath()
+    {
+        return this.path;
     }
 
     public boolean isColliding(BaseObject other)
@@ -111,6 +131,16 @@ public abstract class BaseObject
             this.image == o.image &&
             this.imageResizer == o.imageResizer
         );
+    }
+
+    public void setX(final int newX)
+    {
+        this.x = newX;
+    }
+
+    public void setY(final int newY)
+    {
+        this.y = newY;
     }
 
     public abstract void setWidth(final int newWidth);
