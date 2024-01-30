@@ -28,6 +28,8 @@ public class Player extends BaseObject
 
     public void setHeight(final int newHeight)
     {
+        this.y -= newHeight - this.height;
+
         this.height = newHeight;
         
         this.image = this.imageResizer.resizeImage (

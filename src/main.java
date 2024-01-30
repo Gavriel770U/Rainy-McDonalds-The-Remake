@@ -14,7 +14,7 @@ class Main
         ));
 
         fallingObjects.add(new FallingObject (
-            100, -200, 80, 100, 5, 10, "./resources/drink.png"
+            300, -200, 80, 100, 5, 10, "./resources/drink.png"
         ));
 
         new Frame (
