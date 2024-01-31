@@ -75,8 +75,8 @@ public class Panel extends JPanel
 
                 if(this.player.isColliding(fallingObject))
                 {
-                    this.player.setHeight(this.player.getHeight() + Settings.HEIGHT_GROWTH.value);
-                    this.player.setWidth(this.player.getWidth() + Settings.WIDTH_GROWTH.value);
+                    this.player.setHeight(this.player.getHeight() + fallingObject.getHeightGrowth());
+                    this.player.setWidth(this.player.getWidth() + fallingObject.getWidthGrowth());
                 }
                     
                 Random rand = new Random();
@@ -89,7 +89,9 @@ public class Panel extends JPanel
                     fallingObject.getHeight(),
                     fallingObject.getVelocity(),
                     fallingObject.getAcceleration(),
-                    fallingObject.getPath()
+                    fallingObject.getPath(),
+                    fallingObject.getWidthGrowth(),
+                    fallingObject.getHeightGrowth()
                 ));
             }
         }
@@ -108,7 +110,9 @@ public class Panel extends JPanel
                 fallingObject.getHeight(),
                 fallingObject.getVelocity(),
                 fallingObject.getAcceleration(),
-                fallingObject.getPath()
+                fallingObject.getPath(),
+                fallingObject.getWidthGrowth(),
+                fallingObject.getHeightGrowth()
             ));
 
             iter.remove();

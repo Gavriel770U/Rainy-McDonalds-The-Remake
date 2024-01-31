@@ -1,8 +1,14 @@
 public class FallingObject extends BaseObject
 {
-    public FallingObject(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String fallingObjectPath)    
+    private int widthGrowth;
+    private int heightGrowth;
+
+    public FallingObject(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String fallingObjectPath, final int widthGrowth, final int heightGrowth)    
     {
         super(x, y, width, height, velocity, acceleration, fallingObjectPath);
+
+        this.widthGrowth = widthGrowth;
+        this.heightGrowth = heightGrowth;
     }
 
     public void fall()
@@ -22,5 +28,15 @@ public class FallingObject extends BaseObject
     public void setHeight(final int newHeight)
     {
         // FallingObject's height cannot be changed!
+    }
+
+    public int getWidthGrowth()
+    {
+        return this.widthGrowth;
+    }
+
+    public int getHeightGrowth()
+    {
+        return this.heightGrowth;
     }
 }
