@@ -1,7 +1,7 @@
 public enum Settings 
 {
-    FRAME_WIDTH (800),
-    FRAME_HEIGHT(600),
+    FRAME_WIDTH (1000),
+    FRAME_HEIGHT(800),
     WIDTH_GROWTH(8),
     HEIGHT_GROWTH(6);
 
