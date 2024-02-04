@@ -111,7 +111,7 @@ public abstract class BaseObject
     @Override
     public boolean equals(Object obj)
     {
-        if (null == obj) 
+        if (null == obj)
         {
             return false;
         }
@@ -119,11 +119,13 @@ public abstract class BaseObject
         {
             return true;
         }
-        if (!(obj instanceof BaseObject)) 
+        if (!(obj instanceof BaseObject))
         {
             return false;
         }
+
         BaseObject o = (BaseObject) obj;
+        
         return (
             this.x == o.x &&
             this.y == o.y &&

@@ -27,7 +27,7 @@ public class Player extends BaseObject
         );
 
         this.hitBox.setWidth(this.hitBox.getWidth() + growth);
-        this.hitBox.setX(this.x + this.width / 4 - growth); 
+        this.hitBox.setX(this.x + this.width / 4 - Math.abs(growth)); 
     }
 
     public void setHeight(final int newHeight)

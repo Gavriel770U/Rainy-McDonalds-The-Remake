@@ -17,6 +17,11 @@ class Main
             300, -200, 80, 100, 5, 10, "./resources/drink.png", 8, 6
         ));
 
+        fallingObjects.add(new FallingObject (
+            500, -400, 100, 100, 5, 10, "./resources/blackburger.png", -10, -8
+        ));
+
+
         new Frame (
             "./resources/background.png",
             player,
