@@ -19,12 +19,25 @@ public class CustomKeyListener implements KeyListener
     {
         listenerCurrentTime = System.currentTimeMillis();
 
+        int checkX = this.player.getHitBox().getX();
+        int checkW = this.player.getHitBox().getWidth();
+
         if (keyEvent.getKeyChar() == 'a' || keyEvent.getKeyChar() == 'A')
         {
+            if (checkX < 0)
+            {
+                return;
+            }
+
             this.player.move((this.listenerCurrentTime - this.listenerStartTime) / 1000.0, (byte)(-1));
         }
         else if (keyEvent.getKeyChar() == 'd' || keyEvent.getKeyChar() == 'D')
         {
+            if (checkX + checkW >= Settings.FRAME_WIDTH.value)
+            {
+                return;
+            }
+
             this.player.move((this.listenerCurrentTime - this.listenerStartTime) / 1000.0, (byte)(1));
         }
     }
