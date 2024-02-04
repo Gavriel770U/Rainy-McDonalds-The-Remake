@@ -67,6 +67,9 @@ public class Panel extends JPanel
 
             graphics.drawImage(fallingObject.getImage(), fallingObject.getX(), fallingObject.getY(), this);
 
+            graphics.setColor(Color.CYAN);
+            graphics.drawRect(this.player.getHitBox().getX(), this.player.getHitBox().getY(),this.player.getHitBox().getWidth(), this.player.getHitBox().getHeight());
+
             fallingObject.fall();
 
             if (this.player.isColliding(fallingObject) || fallingObject.getY() > Settings.FRAME_HEIGHT.value)

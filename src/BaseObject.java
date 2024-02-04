@@ -35,6 +35,12 @@ public abstract class BaseObject
         this.path = path;
         this.time0 = System.currentTimeMillis();
 
+
+        if (null == this.path)
+        {
+            return;
+        }
+
         try
         {
             this.image = ImageIO.read(new File(path));
