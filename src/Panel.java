@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class Panel extends JPanel
 {
@@ -80,6 +83,18 @@ public class Panel extends JPanel
                 {
                     this.player.setHeight(this.player.getHeight() + fallingObject.getHeightGrowth());
                     this.player.setWidth(this.player.getWidth() + fallingObject.getWidthGrowth());
+                    try
+                    {
+                        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(fallingObject.getSoundPath()).getAbsoluteFile());
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(audioInputStream);
+                        clip.start();  
+                    }      
+                    catch (Exception e)
+                    {
+                        // sounds playing issues
+                        System.out.println(e.getMessage());
+                    }
                 }
                     
                 Random rand = new Random();
@@ -93,6 +108,7 @@ public class Panel extends JPanel
                     fallingObject.getVelocity(),
                     fallingObject.getAcceleration(),
                     fallingObject.getPath(),
+                    fallingObject.getSoundPath(),
                     fallingObject.getWidthGrowth(),
                     fallingObject.getHeightGrowth()
                 ));
@@ -114,6 +130,7 @@ public class Panel extends JPanel
                 fallingObject.getVelocity(),
                 fallingObject.getAcceleration(),
                 fallingObject.getPath(),
+                fallingObject.getSoundPath(),
                 fallingObject.getWidthGrowth(),
                 fallingObject.getHeightGrowth()
             ));

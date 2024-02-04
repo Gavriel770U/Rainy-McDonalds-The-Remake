@@ -2,13 +2,15 @@ public class FallingObject extends BaseObject
 {
     private int widthGrowth;
     private int heightGrowth;
+    private String soundPath;
 
-    public FallingObject(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String fallingObjectPath, final int widthGrowth, final int heightGrowth)    
+    public FallingObject(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String fallingObjectPath, final String soundPath, final int widthGrowth, final int heightGrowth)    
     {
         super(x, y, width, height, velocity, acceleration, fallingObjectPath);
 
         this.widthGrowth = widthGrowth;
         this.heightGrowth = heightGrowth;
+        this.soundPath = soundPath;
     }
 
     public void fall()
@@ -38,5 +40,10 @@ public class FallingObject extends BaseObject
     public int getHeightGrowth()
     {
         return this.heightGrowth;
+    }
+
+    public String getSoundPath()
+    {
+        return this.soundPath;
     }
 }
