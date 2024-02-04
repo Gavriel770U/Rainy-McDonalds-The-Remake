@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 
 public class Panel extends JPanel
 {
@@ -24,7 +22,8 @@ public class Panel extends JPanel
 
     public Panel (final String backgroundPath,
                   Player player,
-                  ArrayList<FallingObject> fallingObjects
+                  ArrayList<FallingObject> fallingObjects,
+                  String backgroundMusicPath
     ) throws IOException
     {
         setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
@@ -48,6 +47,22 @@ public class Panel extends JPanel
         this.fallingObjects = fallingObjects;
         
         this.startTime = System.currentTimeMillis();
+
+        try 
+        {
+            File audioFile = new File(backgroundMusicPath);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        } 
+        catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) 
+        {
+            System.out.println(e.getMessage());
+        }
+  
+
     }    
 
     @Override

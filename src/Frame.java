@@ -7,7 +7,8 @@ public class Frame extends JFrame
 {
     public Frame (final String backgroundPath,
                   Player player,
-                  ArrayList<FallingObject> fallingObjects
+                  ArrayList<FallingObject> fallingObjects,
+                  String backgroundMusicPath
     )
     {
         setTitle("Rainy McDonald's The Remake");
@@ -25,7 +26,8 @@ public class Frame extends JFrame
                 new Panel (
                    backgroundPath,
                    player,
-                   fallingObjects
+                   fallingObjects,
+                   backgroundMusicPath
                 )
             );
         }

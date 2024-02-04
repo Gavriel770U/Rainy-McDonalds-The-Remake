@@ -14,7 +14,7 @@ class Main
         ));
 
         fallingObjects.add(new FallingObject (
-            300, -200, 80, 100, 5, 10, "./resources/sprites/drink.png", null, 8, 6
+            300, -200, 80, 100, 5, 10, "./resources/sprites/drink.png", "./resources/sounds/drinkswallow.wav", 8, 6
         ));
 
         fallingObjects.add(new FallingObject (
@@ -25,7 +25,8 @@ class Main
         new Frame (
             "./resources/backgrounds/background.png",
             player,
-            fallingObjects
+            fallingObjects,
+            "./resources/sounds/music.wav"
         );
     }
 }
