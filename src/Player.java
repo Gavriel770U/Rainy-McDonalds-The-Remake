@@ -1,11 +1,16 @@
 public class Player extends BaseObject
 {    
     private HitBox hitBox;
+    private boolean jumping;
+    private double velocityY;
+    private static final int JUMP_HEIGHT = 30;
 
     public Player(final int x, final int y, final int width, final int height, final double velocity, final double acceleration, final String playerPath)
     {
         super(x, y, width, height, velocity, acceleration, playerPath);
         this.hitBox = new HitBox(x + width / 4, y + height / 4, width / 2, height / 2, velocity, acceleration);
+        this.jumping = false;
+        this.velocityY = JUMP_HEIGHT;
     }
 
     public void move(final double time, final byte direction)
@@ -51,6 +56,30 @@ public class Player extends BaseObject
     public HitBox getHitBox()
     {
         return this.hitBox;
+    }
+
+    public void setJumping(boolean jumping)
+    {
+        this.jumping = jumping;
+    }
+
+    public void jump()
+    {
+        if (!this.jumping)
+        {
+            return;
+        }
+
+        this.y -= this.velocityY;
+        this.velocityY -= this.acceleration;
+            
+        this.hitBox.setY(this.y + this.height / 4);
+
+        if (this.velocityY < -JUMP_HEIGHT)
+        {
+            this.velocityY = JUMP_HEIGHT;
+            this.jumping = false;
+        }
     }
 
     @Override

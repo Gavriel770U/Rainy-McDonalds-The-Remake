@@ -117,7 +117,7 @@ public class Panel extends JPanel
                 deleted.add(new FallingObject 
                 (
                     rand.nextInt((Settings.FRAME_WIDTH.value - fallingObject.getWidth() + 1)),
-                    -100,
+                    (2 * fallingObject.getHeight() + rand.nextInt(250)) * -1,
                     fallingObject.getWidth(),
                     fallingObject.getHeight(),
                     fallingObject.getVelocity(),
@@ -152,6 +152,8 @@ public class Panel extends JPanel
 
             iter.remove();
         }
+
+        this.player.jump();
 
         repaint();
     }
