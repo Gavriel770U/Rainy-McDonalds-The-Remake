@@ -31,7 +31,7 @@ public abstract class BaseObject
         this.velocity0 = velocity;
         this.velocity = velocity;
         this.acceleration = acceleration;
-        this.imageResizer = this.imageResizer.getInstance();
+        this.imageResizer = ImageResizer.getInstance();
         this.path = path;
         this.time0 = System.currentTimeMillis();
 
