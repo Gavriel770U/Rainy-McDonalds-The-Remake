@@ -7,7 +7,7 @@ class Main
         System.out.println("Welcome!");
 
         ArrayList<FallingObject> fallingObjects = new ArrayList<>();
-        Player player = new Player(Settings.FRAME_WIDTH.value / 2, 600, 160, 160, 10, 0, "./resources/sprites/player.png");
+        Player player = new Player(Settings.FRAME_WIDTH.value / 2, Settings.FRAME_HEIGHT.value - 200, 160, 160, 10, 0, "./resources/sprites/player.png");
 
         fallingObjects.add(new FallingObject (
             100, -100, 100, 100, 5, 10, "./resources/sprites/burger.png", "./resources/sounds/burgerchew.wav", 10, 8
