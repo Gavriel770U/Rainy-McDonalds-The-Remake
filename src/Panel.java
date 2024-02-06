@@ -154,14 +154,14 @@ public class Panel extends JPanel
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
             frame.dispose();
 
-            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/playbutton.png", "CONGRATULATIONS!!! YOU WON!!! :D");
+            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/exitbutton.png", "CONGRATULATIONS!!! YOU WON!!! :D");
         }
         else if (this.player.getWidth() <= 150 && this.player.getHeight() <= 150)
         {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
             frame.dispose();
 
-            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/playbutton.png", "YOU LOST! :'(");
+            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/exitbutton.png", "YOU LOST! :'(");
         }
 
         repaint();
