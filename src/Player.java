@@ -13,7 +13,7 @@ public class Player extends BaseObject
         this.velocityY = JUMP_HEIGHT;
     }
 
-    public void move(final double time, final byte direction)
+    public void move(final byte direction)
     {
         this.x += direction * this.velocity;
         this.hitBox.setX((int)(this.hitBox.getX() + direction * this.velocity));

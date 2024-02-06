@@ -4,23 +4,18 @@ import java.awt.event.KeyListener;
 public class CustomKeyListener implements KeyListener 
 {
     private Player player;
-    private double listenerStartTime;
-    private double listenerCurrentTime;
     private byte direction;
 
-    public CustomKeyListener(Player player, double listenerStartTime)
+    public CustomKeyListener(Player player)
     {
         super();
         this.player = player;
-        this.listenerStartTime = listenerStartTime;
         this.direction = 1;
     }
 
     @Override
     public void keyPressed(KeyEvent keyEvent)
     {
-        listenerCurrentTime = System.currentTimeMillis();
-
         int checkX = this.player.getHitBox().getX();
         int checkW = this.player.getHitBox().getWidth();
 
@@ -33,7 +28,7 @@ public class CustomKeyListener implements KeyListener
                 return;
             }
 
-            this.player.move((this.listenerCurrentTime - this.listenerStartTime) / 1000.0, this.direction);
+            this.player.move(this.direction);
         }
         else if ('D' == Character.toUpperCase(keyEvent.getKeyChar()))
         {
@@ -44,7 +39,7 @@ public class CustomKeyListener implements KeyListener
                 return;
             }
 
-            this.player.move((this.listenerCurrentTime - this.listenerStartTime) / 1000.0, this.direction);
+            this.player.move(this.direction);
         }
     }
 
@@ -63,5 +58,4 @@ public class CustomKeyListener implements KeyListener
     {
         // TODO Auto-generated method stub
     }
-
 }

@@ -17,7 +17,7 @@ public class Frame extends JFrame
         setAutoRequestFocus(true);
         setFocusable(true);
         setResizable(false);
-        addKeyListener(new CustomKeyListener(player, System.currentTimeMillis()));
+        addKeyListener(new CustomKeyListener(player));
 
         try
         {
