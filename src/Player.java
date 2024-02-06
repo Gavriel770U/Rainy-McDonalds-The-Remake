@@ -30,8 +30,8 @@ public class Player extends BaseObject
                      this.width,
                      this.height
         );
-
-        this.hitBox.setWidth(this.hitBox.getWidth() + growth);
+        
+        this.hitBox.setWidth((this.hitBox.getWidth() + this.width) / 3 + Math.abs(growth));
         this.hitBox.setX(this.x + this.width / 4 - Math.abs(growth)); 
     }
 
