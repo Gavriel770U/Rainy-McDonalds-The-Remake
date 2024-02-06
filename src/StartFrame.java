@@ -3,6 +3,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -22,6 +24,7 @@ public class StartFrame extends JFrame
     private StartFrame(String backgroundPath, String playButtonPath) throws IOException
     {
         setTitle("Rainy McDonald's The Remake");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setAutoRequestFocus(true);
@@ -46,6 +49,15 @@ public class StartFrame extends JFrame
                 setFocusable(true);
                 setBackground(Color.BLACK);
                 setLayout(null);
+
+                add (new JLabel("RAINY MCDONALD'S THE REMAKE") {
+                    {
+                        this.setBounds(50,
+                        50, 
+                        100,
+                        30);
+                    }
+                });
 
                 add(new JButton(new ImageIcon(playButtonPath)) {
                     {
