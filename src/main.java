@@ -6,6 +6,11 @@ class Main
     {
         System.out.println("Welcome!");
 
+        StartFrame startFrame = StartFrame.getInstance("./resources/backgrounds/outdoorsbackground.png");
+        
+        for(;!startFrame.isStarted(););
+
+
         ArrayList<FallingObject> fallingObjects = new ArrayList<>();
         Player player = new Player(Settings.FRAME_WIDTH.value / 2, Settings.FRAME_HEIGHT.value - 200, 160, 160, 10, 3.0, "./resources/sprites/player.png");
 

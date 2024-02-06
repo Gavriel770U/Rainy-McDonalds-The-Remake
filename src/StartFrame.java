@@ -1,0 +1,100 @@
+import javax.swing.JPanel;
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class StartFrame extends JFrame 
+{
+    private static StartFrame instance;
+    private static boolean started;
+    private static ImageResizer imageResizer;
+    private static BufferedImage backgroundImage;
+
+    private StartFrame(String backgroundPath) throws IOException
+    {
+        setTitle("Rainy McDonald's The Remake");
+        setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setAutoRequestFocus(true);
+        setFocusable(true);
+        setResizable(false);
+
+        imageResizer = ImageResizer.getInstance();
+
+        backgroundImage = ImageIO.read(new File(backgroundPath));
+
+        backgroundImage = imageResizer.resizeImage (
+                backgroundImage,
+                Settings.FRAME_WIDTH.value,
+                Settings.FRAME_HEIGHT.value
+        );
+
+        add(new JPanel() {
+            {
+                setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
+                setDoubleBuffered(true);
+                setVisible(true);
+                setFocusable(true);
+                setBackground(Color.BLACK);
+                setLayout(null);
+
+                add(new JButton("PLAY") {
+                    {
+                        this.setBounds(
+                            (Settings.FRAME_WIDTH.value - 200) / 2,
+                            Settings.FRAME_HEIGHT.value / 2 + 100,
+                            200,
+                            100
+                        );  
+
+                        this.addActionListener(new ActionListener() {  
+                            public void actionPerformed(ActionEvent actionEvent)
+                            {
+                                started = true;
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            protected void paintComponent(Graphics graphics) {
+                super.paintComponent(graphics);
+                graphics.drawImage(backgroundImage, 0, 0, this);
+            }
+        });
+        pack();
+        setVisible(true);
+
+        started = false;
+    }
+
+    public static synchronized StartFrame getInstance(String backgroundPath)
+    {
+        if (null == instance)
+        {
+            try
+            {
+                instance = new StartFrame(backgroundPath);
+            } 
+            catch (IOException ioe) 
+            {
+                ioe.printStackTrace();
+            }
+        }
+        return instance;
+    }
+
+    public synchronized boolean isStarted() 
+    {
+        return started;
+    }
+}
