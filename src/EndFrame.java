@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,14 +15,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class StartFrame extends JFrame 
+public class EndFrame extends JFrame 
 {
-    private static StartFrame instance;
-    private static boolean started;
+    private static EndFrame instance;
+    private static boolean exited;
     private static ImageResizer imageResizer;
     private static BufferedImage backgroundImage;
 
-    private StartFrame(String backgroundPath, String playButtonPath) throws IOException 
+    private EndFrame(String backgroundPath, String exitButtonPath, String endText) throws IOException 
     {
         setTitle("Rainy McDonald's The Remake");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,6 +40,8 @@ public class StartFrame extends JFrame
                 Settings.FRAME_WIDTH.value,
                 Settings.FRAME_HEIGHT.value
         );
+
+        exited = false;
 
         add(new JPanel() {
             {
@@ -60,7 +63,7 @@ public class StartFrame extends JFrame
 
                 add(new JLabel() {
                     {
-                        setText("RAINY MCDONALD'S");
+                        setText(endText);
                         setForeground(new Color(0xFFFF00));
                         setFont(new Font("Bauhaus 93", Font.BOLD, 60));
                         setBounds(100, 40, Settings.FRAME_WIDTH.value - 20, 100);
@@ -69,7 +72,7 @@ public class StartFrame extends JFrame
 
                 add(new JLabel() {
                     {
-                        setText("THE REMAKE");
+                        setText("THANKS FOR PLAYING! :)");
                         setForeground(new Color(0xFFFF00));
                         setFont(new Font("Bauhaus 93", Font.BOLD, 40));
                         setBounds(100, 80, Settings.FRAME_WIDTH.value - 20, 100);
@@ -85,7 +88,7 @@ public class StartFrame extends JFrame
                     }
                 });
 
-                add(new JButton(new ImageIcon(playButtonPath))
+                add(new JButton(new ImageIcon(exitButtonPath))
                 {
                     {
                         setBounds(
@@ -98,7 +101,7 @@ public class StartFrame extends JFrame
                         addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent actionEvent) 
                             {
-                                started = true;
+                                exited = true;
                             }
                         });
                     }
@@ -111,22 +114,26 @@ public class StartFrame extends JFrame
                 super.paintComponent(graphics);
                 graphics.drawImage(backgroundImage, 0, 0, this);
 
+                if (exited)
+                {
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+                    frame.dispose();
+                }
+
                 repaint();
             }
         });
         pack();
         setVisible(true);
-
-        started = false;
     }
 
-    public static synchronized StartFrame getInstance(String backgroundPath, String playButtonPath) 
+    public static synchronized EndFrame getInstance(String backgroundPath, String exitButtonPath, String endText) 
     {
         if (null == instance) 
         {
             try 
             {
-                instance = new StartFrame(backgroundPath, playButtonPath);
+                instance = new EndFrame(backgroundPath, exitButtonPath, endText);
             }
             catch (IOException ioe) 
             {
@@ -137,8 +144,8 @@ public class StartFrame extends JFrame
         return instance;
     }
 
-    public synchronized boolean isStarted() 
+    public synchronized boolean isExited() 
     {
-        return started;
+        return exited;
     }
 }

@@ -1,5 +1,8 @@
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -17,6 +20,7 @@ public class Panel extends JPanel
     private BufferedImage backgroundImage;
     private Player player;
     private ArrayList<FallingObject> fallingObjects;
+    private boolean isWin;
 
     public Panel (final String backgroundPath,
                   Player player,
@@ -44,6 +48,8 @@ public class Panel extends JPanel
 
         this.fallingObjects = fallingObjects;
 
+        this.isWin = false;
+
         try 
         {
             File audioFile = new File(backgroundMusicPath);
@@ -57,8 +63,6 @@ public class Panel extends JPanel
         {
             System.out.println(e.getMessage());
         }
-  
-
     }    
 
     @Override
@@ -148,6 +152,22 @@ public class Panel extends JPanel
         }
 
         this.player.jump();
+
+        if (this.player.getWidth() >= Settings.FRAME_WIDTH.value - this.player.getWidth() * 2 && this.player.getHeight() >= Settings.FRAME_HEIGHT.value - this.player.getHeight() * 2)
+        {
+            this.isWin = true;
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            frame.dispose();
+
+            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/playbutton.png", "CONGRATULATIONS!!! YOU WON!!! :D");
+        }
+        else if (this.player.getWidth() <= 150 && this.player.getHeight() <= 150)
+        {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            frame.dispose();
+
+            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/playbutton.png", "YOU LOST! :'(");
+        }
 
         repaint();
     }
