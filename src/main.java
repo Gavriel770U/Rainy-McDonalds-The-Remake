@@ -27,7 +27,7 @@ class Main
 
 
         new Frame (
-            "./resources/backgrounds/background.png",
+            "./resources/backgrounds/outdoorsbackground.png",
             player,
             fallingObjects,
             "./resources/sounds/music.wav"
