@@ -6,7 +6,8 @@ class Main
     {
         System.out.println("Welcome!");
 
-        StartFrame startFrame = StartFrame.getInstance("./resources/backgrounds/outdoorsbackground.png");
+        StartFrame startFrame = StartFrame.getInstance("./resources/backgrounds/outdoorsbackground.png",                       "./resources/buttons/playbutton.png"
+        );
         
         for(;!startFrame.isStarted(););
 

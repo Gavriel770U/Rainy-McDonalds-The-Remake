@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.Color;
@@ -18,7 +19,7 @@ public class StartFrame extends JFrame
     private static ImageResizer imageResizer;
     private static BufferedImage backgroundImage;
 
-    private StartFrame(String backgroundPath) throws IOException
+    private StartFrame(String backgroundPath, String playButtonPath) throws IOException
     {
         setTitle("Rainy McDonald's The Remake");
         setPreferredSize(new Dimension(Settings.FRAME_WIDTH.value, Settings.FRAME_HEIGHT.value));
@@ -46,7 +47,7 @@ public class StartFrame extends JFrame
                 setBackground(Color.BLACK);
                 setLayout(null);
 
-                add(new JButton("PLAY") {
+                add(new JButton(new ImageIcon(playButtonPath)) {
                     {
                         this.setBounds(
                             (Settings.FRAME_WIDTH.value - 200) / 2,
@@ -77,13 +78,13 @@ public class StartFrame extends JFrame
         started = false;
     }
 
-    public static synchronized StartFrame getInstance(String backgroundPath)
+    public static synchronized StartFrame getInstance(String backgroundPath, String playButtonPath)
     {
         if (null == instance)
         {
             try
             {
-                instance = new StartFrame(backgroundPath);
+                instance = new StartFrame(backgroundPath, playButtonPath);
             } 
             catch (IOException ioe) 
             {
