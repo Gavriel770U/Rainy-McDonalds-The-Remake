@@ -15,8 +15,6 @@ public class Panel extends JPanel
 {
     private ImageResizer imageResizer;
     private BufferedImage backgroundImage;
-    private double startTime;
-    private double currentTime;
     private Player player;
     private ArrayList<FallingObject> fallingObjects;
 
@@ -45,8 +43,6 @@ public class Panel extends JPanel
         this.player = player;
 
         this.fallingObjects = fallingObjects;
-        
-        this.startTime = System.currentTimeMillis();
 
         try 
         {
@@ -71,8 +67,6 @@ public class Panel extends JPanel
         super.paintComponent(graphics);
         
         graphics.drawImage(this.backgroundImage, 0, 0, this);
-
-        this.currentTime = (System.currentTimeMillis() - this.startTime) / 1000.0;
 
         graphics.drawImage(this.player.getImage(), this.player.getX(), this.player.getY(), this);
 
@@ -132,7 +126,7 @@ public class Panel extends JPanel
 
         iter = deleted.iterator();
 
-        while(iter.hasNext())
+        while (iter.hasNext())
         {
             FallingObject fallingObject = iter.next();
 
