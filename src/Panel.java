@@ -2,7 +2,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -20,7 +19,6 @@ public class Panel extends JPanel
     private BufferedImage backgroundImage;
     private Player player;
     private ArrayList<FallingObject> fallingObjects;
-    private boolean isWin;
 
     public Panel (final String backgroundPath,
                   Player player,
@@ -47,8 +45,6 @@ public class Panel extends JPanel
         this.player = player;
 
         this.fallingObjects = fallingObjects;
-
-        this.isWin = false;
 
         try 
         {
@@ -155,7 +151,6 @@ public class Panel extends JPanel
 
         if (this.player.getWidth() >= Settings.FRAME_WIDTH.value - this.player.getWidth() * 2 && this.player.getHeight() >= Settings.FRAME_HEIGHT.value - this.player.getHeight() * 2)
         {
-            this.isWin = true;
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
             frame.dispose();
 
