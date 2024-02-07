@@ -154,7 +154,7 @@ public class Panel extends JPanel
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
             frame.dispose();
 
-            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/exitbutton.png", "CONGRATULATIONS!!! YOU WON!!! :D");
+            EndFrame endFrame = EndFrame.getInstance("./resources/backgrounds/outdoorsbackground.png", "./resources/buttons/exitbutton.png", "CHEERS! YOU WON!!! :D");
         }
         else if (this.player.getWidth() <= 50 && this.player.getHeight() <= 50)
         {
