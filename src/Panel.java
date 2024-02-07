@@ -149,7 +149,7 @@ public class Panel extends JPanel
 
         this.player.jump();
 
-        if (this.player.getWidth() >= Settings.FRAME_WIDTH.value - this.player.getWidth() * 2 && this.player.getHeight() >= Settings.FRAME_HEIGHT.value - this.player.getHeight() * 2)
+        if (this.player.getWidth() >= Settings.FRAME_WIDTH.value * 3 / 4 && this.player.getHeight() >= Settings.FRAME_HEIGHT.value - this.player.getHeight() * 3 / 4)
         {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
             frame.dispose();
